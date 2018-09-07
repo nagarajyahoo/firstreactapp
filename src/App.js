@@ -110,8 +110,6 @@ class App extends Component {
         );
     }
 
-    //desitokrey.com
-
     getPersons() {
         return (<div>
             {this.state.persons.map((person, index) => {
