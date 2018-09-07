@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Person from './Person/Person';
 import Radium from 'radium';
-import './App.css';
+import classes from './App.css';
 
 class App extends Component {
     state = {
@@ -86,19 +86,19 @@ class App extends Component {
             }
         }
 
-        const classes = [];
+        const assignedClasses = [];
         if (this.state.persons.length <= 2) {
-            classes.push('red');  //'red'
+            assignedClasses.push(classes.red);  //'red'
         }
 
         if (this.state.persons.length <= 1) {
-            classes.push('bold'); // 'red', 'bold'
+            assignedClasses.push(classes.bold); // 'red', 'bold'
         }
 
         return (
-            <div className="App">
+            <div className={classes.App}>
                 <h2> some header </h2>
-                <p className={classes.join(' ')}>
+                <p className={assignedClasses.join(' ')}>
                     This is a paragraph
                 </p>
                 <button
