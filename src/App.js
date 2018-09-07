@@ -63,27 +63,11 @@ class App extends Component {
     };
 
     render() {
-        const style = {
-            backgroundColor: 'green',
-            color: 'white',
-            padding: '8px',
-            border: '1px solid blue',
-            font: 'inherit',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
-
         let persons = null;
+        let btnClass = classes.Green;
         if (this.state.showPersons) {
             persons = this.getPersons();
-            style.backgroundColor = 'red';
-            style[':hover'] = {
-                backgroundColor: 'salmon',
-                color: 'black'
-            }
+            btnClass = classes.Red;
         }
 
         const assignedClasses = [];
@@ -102,7 +86,7 @@ class App extends Component {
                     This is a paragraph
                 </p>
                 <button
-                    style={style}
+                    className={btnClass}
                     onClick={this.togglePersons}>Toggle Persons
                 </button>
                 {persons}

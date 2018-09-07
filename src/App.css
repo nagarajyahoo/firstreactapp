@@ -9,3 +9,29 @@
 .bold {
     font-weight: bold;
 }
+
+.App button {
+    border: 1px solid blue;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.App button.Green {
+    background-color: green;
+    color: white;
+}
+
+.App button.Green:hover {
+    background-color: yellowgreen;
+    color: black;
+}
+
+.App button.Red {
+    background-color: red;
+    color: white;
+}
+
+.App button.Red:hover {
+    background-color: lightsalmon;
+    color: black;
+}
