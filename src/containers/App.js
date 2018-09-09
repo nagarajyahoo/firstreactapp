@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Person from './Person/Person';
-import Radium from 'radium';
+import Persons from '../components/persons/Persons';
 import classes from './App.css';
+import Cockpit from '../cockpit/Cockpit'
 
 class App extends Component {
     state = {
@@ -64,48 +64,25 @@ class App extends Component {
 
     render() {
         let persons = null;
-        let btnClass = classes.Green;
         if (this.state.showPersons) {
-            persons = this.getPersons();
-            btnClass = classes.Red;
-        }
-
-        const assignedClasses = [];
-        if (this.state.persons.length <= 2) {
-            assignedClasses.push(classes.red);  //'red'
-        }
-
-        if (this.state.persons.length <= 1) {
-            assignedClasses.push(classes.bold); // 'red', 'bold'
+            persons = <Persons
+                persons={this.state.persons}
+                clicked={this.deletePerson}
+                valueChanged={this.targetValueChange}/>;
         }
 
         return (
             <div className={classes.App}>
-                <h2> some header </h2>
-                <p className={assignedClasses.join(' ')}>
-                    This is a paragraph
-                </p>
-                <button
-                    className={btnClass}
-                    onClick={this.togglePersons}>Toggle Persons
-                </button>
+
+                <Cockpit
+                    persons={this.state.persons}
+                    showPersons={this.state.showPersons}
+                    togglePersons={this.togglePersons}/>
+
                 {persons}
             </div>
         );
     }
-
-    getPersons() {
-        return (<div>
-            {this.state.persons.map((person, index) => {
-                return (<Person
-                    key={person.id}
-                    name={person.name}
-                    age={person.age}
-                    click={() => this.deletePerson(index)}
-                    valueChange={(event) => this.targetValueChange(event, person.id)}/>)
-            })}
-        </div>);
-    }
 }
 
-export default Radium(App);
+export default App;
