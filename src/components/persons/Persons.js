@@ -23,6 +23,7 @@ class Persons extends Component {
                 key={person.id}
                 name={person.name}
                 age={person.age}
+                position={index}
                 click={() => this.props.clicked(index)}
                 valueChange={(event) => this.props.valueChanged(event, person.id)}/>)
         });
