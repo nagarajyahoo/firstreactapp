@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './Cockpit.css';
+import Aux from '../components/hoc/Aux';
 
 const cockpit = (props) => {
-    let  btnClass = classes.Green;
+    let  btnClass = [classes.Button, classes.Green].join(' ');
     if (props.showPersons) {
-        btnClass = classes.Red;
+        btnClass = [classes.Button, classes.Red].join(' ');
     }
 
     const assignedClasses = [];
@@ -17,7 +18,7 @@ const cockpit = (props) => {
     }
 
     return (
-        <div className={classes.Cockpit}>
+        <Aux>
             <h2> {props.title} </h2>
             <p className={assignedClasses.join(' ')}>
                 This is a paragraph
@@ -27,7 +28,7 @@ const cockpit = (props) => {
                 className={btnClass}
                 onClick={props.togglePersons}>Toggle Persons
             </button>
-        </div>
+        </Aux>
     );
 };
 
