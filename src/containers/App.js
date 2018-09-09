@@ -4,6 +4,19 @@ import classes from './App.css';
 import Cockpit from '../cockpit/Cockpit'
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        console.log("[App] inside constructor");
+    }
+
+    componentWillMount() {
+        console.log("[App] inside componentWillMount");
+    }
+
+    componentDidMount() {
+        console.log("[App] inside componentDidMount");
+    }
+
     state = {
         persons: [
             {id: '1', name: 'person1', age: 27},
@@ -63,6 +76,8 @@ class App extends Component {
     };
 
     render() {
+        console.log("[App] inside render");
+
         let persons = null;
         if (this.state.showPersons) {
             persons = <Persons
@@ -75,6 +90,7 @@ class App extends Component {
             <div className={classes.App}>
 
                 <Cockpit
+                    title={this.props.title}
                     persons={this.state.persons}
                     showPersons={this.state.showPersons}
                     togglePersons={this.togglePersons}/>
