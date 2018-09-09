@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import WithClass from '../../hoc/WithClass'
+import withClassWrapper from '../../hoc/withClassWrapper'
 import PropTypes from 'prop-types'
 
 import classes from './Person.css'
@@ -26,7 +26,7 @@ class Person extends Component {
         console.log("[Person] inside render");
 
         return (
-            <WithClass classes={classes.Person}>
+            <div>
                 <h3 onClick={this.props.click}>I am {this.props.name} and I'm {this.props.age} years old</h3>
                 <p>{this.props.children}</p>
                 <p><input
@@ -34,7 +34,7 @@ class Person extends Component {
                     type="text"
                     onChange={this.props.valueChange}
                     value={this.props.name}/></p>
-            </WithClass>
+            </div>
         )
     }
 }
@@ -46,4 +46,4 @@ Person.propTypes = {
     valueChange: PropTypes.func,
 };
 
-export default Person;
+export default withClassWrapper(Person, classes.Person);
